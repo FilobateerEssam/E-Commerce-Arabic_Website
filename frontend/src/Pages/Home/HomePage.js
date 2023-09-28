@@ -1,5 +1,6 @@
 import NavBarLogin from "../../Components/Utility/NavBarLogin";
 import Slider from "../../Components/Home/Slider";
+import HomeCategory from "../../Components/Home/HomeCategory";
 
 const HomePage = () => {
     return ( 
@@ -7,6 +8,7 @@ const HomePage = () => {
         
             <NavBarLogin />
             <Slider />
+            <HomeCategory />
 
         </div>
      );
