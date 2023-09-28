@@ -1,4 +1,4 @@
-import NavBarLogin from "../../Components/Home/NavBarLogin";
+import NavBarLogin from "../../Components/Utility/NavBarLogin";
 import Slider from "../../Components/Home/Slider";
 
 const HomePage = () => {
