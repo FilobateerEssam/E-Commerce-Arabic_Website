@@ -6,10 +6,12 @@ import cat2 from "../../Images/cat2.png";
 import labtop from "../../Images/labtop.png";
 import sale from "../../Images/sale.png";
 import pic from "../../Images/pic.png";
+import ProductCard from "../Products/ProductCard";
 
 const HomeCategory = () => {
   return (
     <Container>
+    
       <SubTitle title="التصنيفات" btntitle="المزيد" />
       <Row className="my-2 d-flex justify-content-between">
         <CategoryCards title={"الملابس"} background={"#f4dbA5"} img={clothe} />
@@ -19,6 +21,7 @@ const HomeCategory = () => {
         <CategoryCards title="اجهزة منزلية" img={sale} background="#F4DBA4" />
         <CategoryCards title="اجهزة منزلية" img={clothe} background="#FF6262" />
       </Row>
+
     </Container>
   );
 };
