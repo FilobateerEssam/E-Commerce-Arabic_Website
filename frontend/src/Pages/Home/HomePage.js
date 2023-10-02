@@ -1,20 +1,20 @@
-import NavBarLogin from "../../Components/Utility/NavBarLogin";
 import Slider from "../../Components/Home/Slider";
 import HomeCategory from "../../Components/Home/HomeCategory";
 import CardProductsContainer from "../../Components/Products/CardProductsContainer";
 import DiscoundSection from "../../Components/Home/DiscoundSection";
+import BrandFeatured from "../../Components/Brand/BrandFeatured";
 
 const HomePage = () => {
   return (
     <div className="font" style={{ minHeight: "670px" }}>
-      <NavBarLogin />
       <Slider />
       <HomeCategory />
-      <CardProductsContainer title={"الاكثر مبيعا"} btntitle={"المزيد"}/>
+      <CardProductsContainer title={"الاكثر مبيعا"} btntitle={"المزيد"} />
 
-        <DiscoundSection />
+      <DiscoundSection />
 
-      <CardProductsContainer title={"احدث الازياء"} btntitle={"المزيد"}/>
+      <CardProductsContainer title={"احدث الازياء"} btntitle={"المزيد"} />
+      <BrandFeatured title={" اشهر الماركات"} btntitle={"المزيد"} />
     </div>
   );
 };

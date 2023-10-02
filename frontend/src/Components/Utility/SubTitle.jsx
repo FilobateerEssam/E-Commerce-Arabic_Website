@@ -1,17 +1,21 @@
-//  التصنيفات                     المزيد 
-const SubTitle = ({title , btntitle}) => {
+import { Link } from "react-router-dom";
 
-    return ( 
-        <div className="d-flex justify-content-between pt-4">
+//  التصنيفات                     المزيد
+const SubTitle = ({ title, btntitle, pathText }) => {
+  return (
+    <div className="d-flex justify-content-between pt-4">
+      <div className="sub-tile">{title}</div>
+      {/* if btntitle is true then show the button else show nothing but show to user title only */}
+      {btntitle ? (
 
-        <div className="sub-tile">{title}</div>
-        {/* if btntitle is true then show the button else show nothing but show to user title only */}
-        {btntitle ? (
-            
-                <div className="shopping-now">{btntitle}</div>
-        ) : null}
+        <Link to={`${pathText}`} style={{ textDecoration: "none" }}>
+
+          <div className="shopping-now">{btntitle}</div>
+
+        </Link>
+      ) : null}
     </div>
-     );
-}
- 
+  );
+};
+
 export default SubTitle;
