@@ -11,10 +11,11 @@ const dbConnection = () =>{
   .then((conn) => {
     console.log(`DB Connected ${conn.connection.host} 😎😎`);
   })
-  .catch((err) => {
-    console.error(`DB Error: ${err}`);
-    process.exit(1);
-  });
+
+  // .catch((err) => {
+  //   console.error(`DB Error: ${err}`);
+  //   process.exit(1);
+  // });
 
 };
 

@@ -24,6 +24,9 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
   console.log(`Mode: ${process.env.NODE_ENV} `);
 }
+else{
+  app.use(morgan("prod"))
+}
 
 // Mount Routes
 app.use("/api/v1/categories", categoryRoute);
@@ -41,6 +44,7 @@ app.all("*", (req, res, next) => {
       400
     )
   );
+  
 });
 
 // Global Error Handler
@@ -48,6 +52,20 @@ app.use(globalError);
 
 const PORT = process.env.PORT || 8000;
 // Localhost:8000 and Server is running
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`server App is running on port ${PORT}`);
+});
+
+// Handle Rejection Errors Outside Express App which back from Async 
+// Events => list => callback(err) Async
+// 1- Unhandled Rejection Errors Outside Express App
+
+process.on("unhandledRejection", (err) => {
+  
+  console.error(`unhandledRejection Errors: ${err}`);
+  server.close(() => {
+    console.error(`Shutting down .........`)
+
+    process.exit(1);
+  }); 
 });

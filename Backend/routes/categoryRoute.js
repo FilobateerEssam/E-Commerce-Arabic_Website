@@ -1,29 +1,66 @@
-// imports 
+// imports
 const express = require("express");
+const { param, validationResult } = require("express-validator");
 
-const { getCategories ,createCategory, getSpecificCategory, updateCategory, deleteCategory } = require("../services/categoryService");
+const {
+  getCategories,
+  createCategory,
+  getSpecificCategory,
+  updateCategory,
+  deleteCategory,
+} = require("../services/categoryService");
+const {
+  getCategoryValidator,
+  createCategoryValidator,
+  updateCategoryValidator,
+  deleteCategoryValidator,
+} = require("../utils/Validator/CategoryValidator");
+const ValidatorMiddleware = require("../Middlewares/ValidatorMiddleware");
 
 // Routes
 // Import Routes For Reguest (Req) and Response (Res)
 
 const router = express.Router();
 
-// this is Equal that 
+// this is Equal that
 // router.get("/", getCategories);
 // router.post("/", createCategory);  So that is better
 
-router.route("/").get(getCategories).post(createCategory);
+router.route("/").get(getCategories).post(
+  // validation
+  createCategoryValidator,
+  createCategory
+);
 
-// Specific Category
- router.get("/:id", getSpecificCategory);
+router
+  .route("/:id")
+  // Specific Category
 
- // update Category
+  .get(
+    // validation
 
- router.put("/:id", updateCategory);
+    getCategoryValidator,
 
- // delete Category
+    // business logic
 
- router.delete("/:id", deleteCategory);
+    getSpecificCategory
+  )
 
+  // update Category
+
+  .put(
+    // validation
+    updateCategoryValidator,
+
+    updateCategory
+  )
+
+  // delete Category
+
+  .delete(
+    // validation
+    deleteCategoryValidator,
+    deleteCategory
+  );
 
 module.exports = router;
