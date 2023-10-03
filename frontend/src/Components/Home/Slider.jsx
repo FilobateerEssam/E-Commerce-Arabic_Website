@@ -9,6 +9,7 @@ import prod4 from "../../Images/prod4.png";
 
 const Slider = () => {
     const [index, setIndex] = useState(0)
+    
     const handleSelect = (selectedIndex) => {
         console.log(selectedIndex)
         setIndex(selectedIndex)

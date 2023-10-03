@@ -7,6 +7,7 @@ import RegisterPage from "./Pages/Auth/RegisterPage";
 import AllCategoryPage from "./Pages/Category/AllCategoryPage";
 import AllBrandsPage from "./Pages/Brand/AllBrandsPage";
 import ShopProductPage from "./Pages/Products/ShopProductPage";
+import ProductDetalisPage from "./Pages/Products/ProductDetalisPage";
 
 function App() {
   return (
@@ -23,7 +24,11 @@ function App() {
           <Route path="/allbrand" element={<AllBrandsPage />} />
 
           {/* Work with btn المزيد ب الاكثر مبيعا و احدث الازياء */}
-          <Route path="/allproducts" element={<ShopProductPage />} />
+          <Route path="/products" element={<ShopProductPage />} />
+
+
+          <Route path="/products/:id" element={<ProductDetalisPage />} />
+
 
         </Routes>
       </BrowserRouter>
