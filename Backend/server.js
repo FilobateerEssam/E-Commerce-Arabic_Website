@@ -10,6 +10,7 @@ const categoryRoute = require("./routes/categoryRoute");
 const ApiError = require("./utils/ApiError");
 const globalError = require("./Middlewares/errorMiddleware");
 const subCategoryRoute = require("./routes/subCategoryRoute");
+const brandRoute = require("./routes/brandRoute");
 
 
 // Connect to DB
@@ -35,6 +36,7 @@ else{
 // Mount Routes
 app.use("/api/v1/categories", categoryRoute);
 app.use("/api/v1/subCategory", subCategoryRoute);
+app.use("/api/v1/brands", brandRoute);
 
 
 // if we use this route that not exist in our application
