@@ -1,10 +1,10 @@
 // import mongoose
 const mongoose = require("mongoose");
 
-
 // 1-Create Schema
 
-const categorySchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema(
+  {
     name: {
       type: String,
       required: [true, "Category name is required"],
@@ -13,21 +13,28 @@ const categorySchema = new mongoose.Schema({
       maxlength: [50, "Too Long Category"],
     },
     // A and B => shopping.com/a-and-b
-    slug:{
+    slug: {
       type: String,
       lowercase: true,
     },
-    image:{
+    image: {
       type: String,
     },
+  },
+  { timestamps: true } // createdAt, updatedAt
+);
 
-  }, 
-  {timestamps: true} // createdAt, updatedAt
-  );
-  
-  // 2-Create Model                      collection name , schema name
-  
-  const CategoryModel = mongoose.model("Category", categorySchema);
+// populate the subcategory for category
 
+// can be any name but use that name in populate
+categorySchema.virtual("subcategories", {
+  ref: "SubCategory",
+  foreignField: "category",
+  localField: "_id",
+});
 
-  module.exports = CategoryModel;
+// 2-Create Model                      collection name , schema name
+
+const CategoryModel = mongoose.model("Category", categorySchema);
+
+module.exports = CategoryModel;

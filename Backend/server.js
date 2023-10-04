@@ -1,12 +1,16 @@
 const express = require("express");
-const dotenv = require("dotenv");
 const morgan = require("morgan");
+const dotenv = require("dotenv");
+
 dotenv.config({ path: "config.env" });
+
 const dbConnection = require("./config/database");
 const categoryRoute = require("./routes/categoryRoute");
 
 const ApiError = require("./utils/ApiError");
 const globalError = require("./Middlewares/errorMiddleware");
+const subCategoryRoute = require("./routes/subCategoryRoute");
+
 
 // Connect to DB
 dbConnection();
@@ -30,6 +34,8 @@ else{
 
 // Mount Routes
 app.use("/api/v1/categories", categoryRoute);
+app.use("/api/v1/subCategory", subCategoryRoute);
+
 
 // if we use this route that not exist in our application
 app.all("*", (req, res, next) => {

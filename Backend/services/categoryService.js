@@ -30,14 +30,14 @@ exports.getCategories = asyncHandler(async (req, res) => {
 exports.getSpecificCategory = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
 
-  const category_id = await CategoryModel.findById(id);
+  const categoryId = await CategoryModel.findById(id);
 
-  if (!category_id) {
+  if (!categoryId) {
     // res.status(404).json({ message: `Category not found for this id ${id}` });
     return next(new ApiError(`Category not found for this id ${id}`, 404));
   }
 
-  res.status(200).json({ data: category_id });
+  res.status(200).json({ data: categoryId });
 });
 
 // @desc Create with async await
@@ -65,7 +65,7 @@ exports.updateCategory = asyncHandler(async (req, res , next) => {
 
   // things that we need to update
 
-  name = req.body.name;
+  const {name} = req.body;
 
   // make update
 
